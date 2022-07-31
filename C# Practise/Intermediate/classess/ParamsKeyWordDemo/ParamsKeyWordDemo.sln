@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30717.126
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ParamsKeyWordDemo", "ParamsKeyWordDemo\ParamsKeyWordDemo.csproj", "{8B324294-A027-468A-B731-ACB8871E2588}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8B324294-A027-468A-B731-ACB8871E2588}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8B324294-A027-468A-B731-ACB8871E2588}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8B324294-A027-468A-B731-ACB8871E2588}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8B324294-A027-468A-B731-ACB8871E2588}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6059E8BA-9254-4BBC-B348-A4AC639BDFF3}
+	EndGlobalSection
+EndGlobal

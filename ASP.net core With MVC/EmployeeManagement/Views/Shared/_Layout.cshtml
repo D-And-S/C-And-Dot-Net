@@ -1,0 +1,107 @@
+﻿@*
+    --We want to show something after login and
+    --we want to show something after logout
+    --for this reason we will use SignInManger, built in feature for asp.net core
+    --to use SignInManager we need to use inject decorator
+
+    -- we use applicationUser which inherit identity user
+*@
+
+@inject SignInManager<ApplicationUser> signInManager;
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <environment include="Development">
+        <link href="~/css/StyleSheet.css" rel="stylesheet" />
+        <link href="~/lib/bootstrap/css/bootstrap.css" rel="stylesheet" />
+        <script src="~/lib/jquery/jquery.js"></script>
+        <script src="~/lib/jquery-validate/jquery.validate.js"></script>
+        <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+        <script src="~/lib/bootstrap/js/bootstrap.js"></script>
+    </environment>
+    <environment exclude="Development">
+        <link rel="stylesheet"
+              href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
+              integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn"
+              crossorigin="anonymous"
+              asp-fallback-href="~/lib/bootstrap/css/bootstrap.min.css"
+              asp-fallback-test-class="sr-only"
+              asp-fallback-test-property="position"
+              asp-fallback-test-value="absolute"
+              asp-suppress-fallback-integrity="true">
+
+        <link href="~/css/StyleSheet.css" rel="stylesheet" />
+        <script src="~/lib/jquery/jquery.min.js"></script>
+        <script src="~/lib/bootstrap/js/bootstrap.min.js"></script>
+    </environment>
+    <title>@ViewBag.Title</title>
+    <link href="~/css/StyleSheet.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="container">
+        <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+            <a class="navbar-brand">
+                <img src="~/images/brand.png" height="30" width="30" asp-append-version="true" />
+            </a>
+            <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#collapsibleNavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="collapsibleNavbar">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a asp-action="index" asp-controller="home" class="nav-link">List</a>
+                    </li>
+                    <li class="nav-item">
+                        <a asp-action="create" asp-controller="home" class="nav-link">Create</a>
+                    </li>
+                  @if (signInManager.IsSignedIn(User) && (User.IsInRole("Admin") || User.IsInRole("Super Admin")))
+                                        {
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink"
+           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Manage
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <a class="dropdown-item" asp-controller="Administrator"
+               asp-action="UserList">Users</a>
+                    <a class="dropdown-item" asp-controller="Administrator"
+               asp-action="ListRoles">Roles</a>
+                </div>
+            </li>
+                                        }
+                </ul>
+                <ul class="navbar-nav ml-auto">
+                    @if (signInManager.IsSignedIn(User))
+                    {
+                                <li class="nav-item">
+                                    <form method="post" asp-action="logout" asp-controller="account">
+                                        <button type="submit" class="nav-link btn btn-link py-0" style="width:auto">
+                                            Logout @User.Identity.Name
+                                        </button>
+                                    </form>
+                                </li>
+                    }
+                    else
+                    {
+                                <li class="nav-item">
+                                    <a asp-action="Login" asp-controller="Account" class="nav-link">Login</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a asp-action="Register" asp-controller="Account" class="nav-link">Register</a>
+                                </li>
+                    }
+
+                </ul>
+            </div>
+        </nav>
+        <div>
+            @RenderBody()
+        </div>
+        @if (IsSectionDefined("Scripts"))
+        {
+            @RenderSection("Scripts", required:true)
+        }
+    </div>
+</body>
+</html>
