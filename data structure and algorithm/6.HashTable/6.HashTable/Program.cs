@@ -4,7 +4,19 @@ var mapDemo = new MapDemo();
 var datas = mapDemo.FindFirstRepeatingCharacter("A Green Apple");
 //Console.WriteLine(datas);
 
-Console.WriteLine(mapDemo.hash("123456"));
+//Console.WriteLine(mapDemo.hash("123456"));
+
+var hashTable = new HashTable();
+hashTable.Put(6, "A");
+hashTable.Put(8, "B");  
+hashTable.Put(11, "C");
+//hashTable.Put(6, "A+");
+hashTable.Remove(6);
+
+
+Console.WriteLine(hashTable);
+//var getValue = hashTable.Get(11);
+//Console.WriteLine(getValue);
 
 /* 
  * dictionary example

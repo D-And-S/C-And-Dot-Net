@@ -8,9 +8,9 @@ namespace _6.HashTable
 {
     internal class MapDemo
     {
+
         // find the first non repeated character in string
         // we should write method that return G as non-repeated character 
-
         public char FindFirstNonRepeatingChar(string str)
         {
             var dictionary = new Dictionary<char, int>();
@@ -54,6 +54,7 @@ namespace _6.HashTable
 
             return char.MinValue;
         }
+
 
         public int hash(int number)
         {
