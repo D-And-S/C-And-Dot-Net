@@ -5,6 +5,8 @@ namespace CSharpExcercise
 {
     class ArrayExcercise
     {
+
+    
         /*
          1.
             When you post a message on Facebook, depending on the number of people who like your post, Facebook displays different information.

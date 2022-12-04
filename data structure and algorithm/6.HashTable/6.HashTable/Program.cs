@@ -6,7 +6,7 @@ var datas = mapDemo.FindFirstRepeatingCharacter("A Green Apple");
 
 //Console.WriteLine(mapDemo.hash("123456"));
 
-var hashTable = new HashTable();
+var hashTable = new HashTableRefactoring();
 hashTable.Put(6, "A");
 hashTable.Put(8, "B");  
 hashTable.Put(11, "C");

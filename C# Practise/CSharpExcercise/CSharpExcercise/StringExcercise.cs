@@ -363,6 +363,7 @@ namespace CSharpExcercise
           Check the said string is an 'isograms' or not! True
 
         */
+
         public static void checkIsogram()
         {
             Console.WriteLine("Enter A String");
@@ -381,7 +382,8 @@ namespace CSharpExcercise
                     if (characterList.Contains(input[i]))
                     {
                         result = false;
-                    }else
+                    }
+                    else
                     {
                         characterList.Add(input[i]);
                         result = true;
@@ -390,5 +392,18 @@ namespace CSharpExcercise
             }
             Console.WriteLine(result);
         }
+
+        /*
+          10. String Capitalize
+         */
+        public static string Capitalize(string input) =>
+
+            input switch
+            {
+                null => throw new ArgumentNullException(nameof(input)),
+                "" => throw new ArgumentException($"{nameof(input)} cannot be empty"),
+                _ => string.Concat(input[0].ToString().ToUpper(), input.AsSpan(1))
+            };
+
     }
 }
